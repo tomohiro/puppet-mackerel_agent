@@ -8,7 +8,7 @@ Usage
 --------------------------------------------------------------------------------
 
 ```puppet
-class { 'mackerel-agent':
+class { 'mackerel_agent':
   apikey => 'Your API Key'
 }
 ```
