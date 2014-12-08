@@ -2,7 +2,8 @@
 .tmp
 .librarian
 .vagrant
-modules
+.mackerel-api-key
+modules/stdlib
 vendor
 pkg
 Gemfile.lock

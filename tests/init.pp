@@ -10,5 +10,5 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 class { 'mackerel_agent':
-  apikey => 'Test API Key'
+  apikey => $apikey
 }
