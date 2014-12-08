@@ -7,7 +7,7 @@ class mackerel_agent::config(
   $root    = '.',
   $verbose = false,
 ) {
-  file { '/mackerel-agent.conf':
+  file { 'mackerel-agent.conf':
     ensure  => $ensure,
     path    => '/etc/mackerel-agent/mackerel-agent.conf',
     content => template('mackerel_agent/mackerel-agent.conf.erb')
