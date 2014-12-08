@@ -4,5 +4,6 @@
 .vagrant
 modules
 vendor
+pkg
 Gemfile.lock
 Puppetfile.lock
