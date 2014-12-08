@@ -1,7 +1,7 @@
 Puppet module for mackerel-agent
 ================================================================================
 
-This Puppet module provides to install and configure [mackerel-agent](https://github.com/mackerelio/mackerel-agent).
+This Puppet module install and configure [mackerel-agent](https://github.com/mackerelio/mackerel-agent).
 
 
 Usage

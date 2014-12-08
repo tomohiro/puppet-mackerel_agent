@@ -2,7 +2,7 @@
   "name": "tomohiro-mackerel_agent",
   "version": "0.1.0",
   "author": "Tomohiro TAIRA",
-  "summary": "Installs and configures mackerel-agent",
+  "summary": "Install and configure mackerel-agent",
   "license": "Apache 2.0",
   "source": "https://github.com/Tomohiro/puppet-mackerel_agent",
   "project_page": "https://github.com/Tomohiro/puppet-mackerel_agent",

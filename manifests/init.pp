@@ -1,6 +1,6 @@
 # == Class: mackerel_agent
 #
-# This class installs and configures mackerel-agent
+# This class install and configure mackerel-agent
 #
 # === Parameters
 #
