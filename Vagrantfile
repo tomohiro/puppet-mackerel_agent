@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = 'puppetlabs/centos-6.5-64-puppet'
 
+  config.vm.provision :shell, inline: 'ln -sf /vagrant/ /vagrant/modules/mackerel_agent'
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = 'tests'
     puppet.manifest_file  = 'init.pp'
