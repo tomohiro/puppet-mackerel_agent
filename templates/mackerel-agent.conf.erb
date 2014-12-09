@@ -1,7 +1,11 @@
+# NOTE:
+#   This configuration file copied from
+#   https://github.com/mackerelio/mackerel-agent/blob/master/mackerel-agent.conf
+#
 apikey = "<%= @apikey %>"
-pidfile = "<%= @pidfile %>"
-root = "<%= @root %>"
-verbose = <%= @verbose %>
+pidfile = "./pid"
+root = "."
+verbose = false
 
 # Include other config files
 # include = "/etc/mackerel-agent/conf.d/*.conf"

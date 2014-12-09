@@ -1,11 +1,8 @@
 # == Class: mackerel_agent::config
 #
 class mackerel_agent::config(
-  $ensure  = 'present',
+  $ensure  = present,
   $apikey  = undef,
-  $pidfile = './pid',
-  $root    = '.',
-  $verbose = false,
 ) {
   file { 'mackerel-agent.conf':
     ensure  => $ensure,

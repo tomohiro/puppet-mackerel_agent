@@ -4,7 +4,21 @@
 #
 # === Parameters
 #
-# TODO
+# [*ensure*]
+#   Passed to the mackerel_agent
+#   Defaults to present
+#
+# [*apikey*]
+#   Your mackerel API key
+#   Defaults to undefined
+#
+# [*service_ensure*]
+#   Whether you want to mackerel-agent daemon to start up
+#   Defaults to running
+#
+# [*service_enable*]
+#   Whether you want to mackerel-agent daemon to start up at boot
+#   Defaults to true
 #
 # === Examples
 #
@@ -23,10 +37,7 @@
 class mackerel_agent(
   $ensure         = present,
   $apikey         = undef,
-  $pidfile        = './pid',
-  $root           = '.',
-  $verbose        = false,
-  $service_ensure = 'running',
+  $service_ensure = running,
   $service_enable = true
 ) {
   validate_re($::osfamily, '^(RedHat)$', 'This module only works on Red Hat based systems.')
@@ -42,11 +53,7 @@ class mackerel_agent(
 
     class { 'mackerel_agent::config':
       apikey  => $apikey,
-      pidfile => $pidfile,
-      root    => $root,
-      verbose => $verbose,
-      require => Class['mackerel_agent::install'],
-      notify  => Class['mackerel_agent::service']
+      require => Class['mackerel_agent::install']
     }
 
     class { 'mackerel_agent::service':
