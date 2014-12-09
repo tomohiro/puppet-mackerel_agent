@@ -3,7 +3,7 @@
 .librarian
 .vagrant
 .mackerel-api-key
-modules
+modules/
 vendor
 pkg
 Gemfile.lock
