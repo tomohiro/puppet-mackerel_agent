@@ -5,15 +5,26 @@ Table of Contents
 --------------------------------------------------------------------------------
 
 1. [Overview - What is the mackerel_agent module?](#overview)
-2. [Usage - The Class available configuration](#usage)
-3. [Limitations - OS compatibility](#limitations)
-4. [Development - Guide for contributing to the module](#development)
+2. [Setup - The basics of getting started](#setup)
+3. [Usage - How to use the module](#usage)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [Development - Guide for contributing to the module](#development)
 
 
 Overview
 --------------------------------------------------------------------------------
 
 This Puppet module install and configure [mackerel-agent](https://github.com/mackerelio/mackerel-agent).
+
+
+Setup
+--------------------------------------------------------------------------------
+
+Puppet module:
+
+```sh
+$ puppet module install tomohiro-mackerel-agent
+```
 
 
 Usage
@@ -34,6 +45,12 @@ Limitations
 
 Development
 --------------------------------------------------------------------------------
+
+### Requirements
+
+- Puppet 3.7
+- librarian-puppet
+
 
 ### Contributing
 
