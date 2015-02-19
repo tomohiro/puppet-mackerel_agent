@@ -1,6 +1,9 @@
 Puppet module for mackerel-agent
 ================================================================================
 
+[![Puppetforge](https://img.shields.io/puppetforge/v/tomohiro/mackerel_agent.svg?style=flat-square)](https://forge.puppetlabs.com/tomohiro/mackerel_agent)
+
+
 Table of Contents
 --------------------------------------------------------------------------------
 
