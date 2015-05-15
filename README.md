@@ -26,7 +26,7 @@ Setup
 Puppet module:
 
 ```sh
-$ puppet module install tomohiro-mackerel-agent
+$ puppet module install tomohiro-mackerel_agent
 ```
 
 
