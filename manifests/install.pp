@@ -34,9 +34,6 @@ class mackerel_agent::install(
   }
 
   package { 'mackerel-agent':
-    ensure        => $ensure,
-    # [PUP-2650] 3.6.1 issues "warning" message for deprecation
-    # https://tickets.puppetlabs.com/browse/PUP-2650
-    allow_virtual => false,
+    ensure        => $ensure
   }
 }
