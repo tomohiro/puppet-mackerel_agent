@@ -16,6 +16,18 @@ class mackerel_agent::install(
         gpgcheck => 1
       }
     }
+    'Debian': {
+      apt::key { "mackerel":
+        key => 'C2B48821',
+        key_source => $gpgkey_url
+      }
+      apt::source { "mackerel":
+        location    => "http://apt.mackerel.io/debian/",
+        release     => "mackerel",
+        repos       => "contrib",
+        include_src => false
+      }
+    }
     default: {
       # Do nothing
     }
