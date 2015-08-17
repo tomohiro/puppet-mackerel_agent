@@ -28,5 +28,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
     end
   end
+
+  config.vm.define :ubuntu do |ubuntu|
+    ubuntu.vm.box       = 'puppetlabs/ubuntu-14.04-64-puppet'
+    ubuntu.vm.host_name = 'ubuntu'
+
+    ubuntu.vm.provision  :puppet do |puppet|
+      puppet.manifests_path = 'tests'
+      puppet.manifest_file  = 'init.pp'
+      puppet.module_path    = 'modules'
+      puppet.facter = {
+        'apikey' => apikey
+      }
+    end
   end
 end
