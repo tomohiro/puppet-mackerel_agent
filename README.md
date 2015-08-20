@@ -44,6 +44,7 @@ Limitations
 --------------------------------------------------------------------------------
 
 - RHEL/CentOS 6
+- Debian/Ubuntu
 
 
 Development

@@ -40,7 +40,7 @@ class mackerel_agent(
   $service_ensure = running,
   $service_enable = true
 ) {
-  validate_re($::osfamily, '^(RedHat)$', 'This module only works on Red Hat based systems.')
+  validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat based systems.')
   validate_string($apikey)
   validate_bool($service_enable)
 

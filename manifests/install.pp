@@ -16,15 +16,24 @@ class mackerel_agent::install(
         gpgcheck => 1
       }
     }
+    'Debian': {
+      apt::key { "mackerel":
+        key => 'C2B48821',
+        key_source => $gpgkey_url
+      }
+      apt::source { "mackerel":
+        location    => "http://apt.mackerel.io/debian/",
+        release     => "mackerel",
+        repos       => "contrib",
+        include_src => false
+      }
+    }
     default: {
       # Do nothing
     }
   }
 
   package { 'mackerel-agent':
-    ensure        => $ensure,
-    # [PUP-2650] 3.6.1 issues "warning" message for deprecation
-    # https://tickets.puppetlabs.com/browse/PUP-2650
-    allow_virtual => false,
+    ensure        => $ensure
   }
 }
