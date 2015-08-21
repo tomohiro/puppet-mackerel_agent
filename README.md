@@ -87,6 +87,7 @@ $ vagrant provision
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2014 Tomohiro TAIRA.
+&copy; 2014 - 2015 Tomohiro TAIRA.
+
 This project is licensed under the Apache License, Version 2.0.
-See LICENSE for details.
+See [LICENSE](LICENSE) for details.
