@@ -7,6 +7,11 @@ VAGRANTFILE_API_VERSION = '2'
 # Copied from https://github.com/mackerelio/cookbook-mackerel-agent
 apikey = File.read('.mackerel-api-key').chomp!
 
+SUPPORTING_PLATFORMS = {
+  centos: 'puppetlabs/centos-6.6-64-puppet',
+  ubuntu: 'puppetlabs/ubuntu-14.04-64-puppet'
+}
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_check_update = false
 
@@ -15,31 +20,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell,
     inline: "[ -L #{agent_path} ] || ln -s /vagrant/ #{agent_path}"
 
-  config.vm.define :centos do |centos|
-    centos.vm.box    = 'puppetlabs/centos-6.6-64-puppet'
-    centos.vm.host_name = 'centos'
-
-    centos.vm.provision  :puppet do |puppet|
-      puppet.manifests_path = 'tests'
-      puppet.manifest_file  = 'init.pp'
-      puppet.module_path    = 'modules'
-      puppet.facter = {
-        'apikey' => apikey
-      }
-    end
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = 'tests'
+    puppet.manifest_file  = 'init.pp'
+    puppet.module_path    = 'modules'
+    puppet.facter = {
+      'apikey' => apikey
+    }
   end
 
-  config.vm.define :ubuntu do |ubuntu|
-    ubuntu.vm.box       = 'puppetlabs/ubuntu-14.04-64-puppet'
-    ubuntu.vm.host_name = 'ubuntu'
-
-    ubuntu.vm.provision  :puppet do |puppet|
-      puppet.manifests_path = 'tests'
-      puppet.manifest_file  = 'init.pp'
-      puppet.module_path    = 'modules'
-      puppet.facter = {
-        'apikey' => apikey
-      }
+  SUPPORTING_PLATFORMS.each do |osfamily, box|
+    config.vm.define osfamily do |platform|
+      platform.vm.box       = box
+      platform.vm.host_name = osfamily
     end
   end
 end
