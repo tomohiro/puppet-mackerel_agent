@@ -10,7 +10,7 @@
   "tags": ["mackerel"],
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.2.0 <5.0.0" },
-    { "name": "puppetlabs/apt", "version_requirement": ">=1.1.0 <2.0.0" }
+    { "name": "puppetlabs/apt", "version_requirement": ">=2.0.0 <2.2.0" }
   ],
   "operatingsystem_support": [
     {
