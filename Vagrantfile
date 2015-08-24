@@ -20,10 +20,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell,
     inline: "[ -L #{agent_path} ] || ln -s /vagrant/ #{agent_path}"
 
+  # Define Puppet manifest for testing
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = 'tests'
-    puppet.manifest_file  = 'init.pp'
-    puppet.module_path    = 'modules'
+    puppet.environment_path = '.'
+    puppet.environment      = 'test'
+    puppet.module_path      = 'modules'
     puppet.facter = {
       'apikey' => apikey
     }
