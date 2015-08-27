@@ -32,7 +32,7 @@
 #
 # === Copyright
 #
-# Copyright 2014 Tomohiro TAIRA
+# Copyright 2014 - 2015 Tomohiro TAIRA
 #
 class mackerel_agent(
   $ensure         = present,
@@ -40,7 +40,7 @@ class mackerel_agent(
   $service_ensure = running,
   $service_enable = true
 ) {
-  validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat based systems.')
+  validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
   validate_bool($service_enable)
 
