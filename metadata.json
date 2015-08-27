@@ -20,6 +20,14 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [ "6" ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "14.04" ]
     }
   ]
 }

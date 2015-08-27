@@ -44,7 +44,8 @@ Limitations
 --------------------------------------------------------------------------------
 
 - RHEL/CentOS 6
-- Debian/Ubuntu
+- Debian 7
+- Ubuntu 14.04
 
 
 Development
@@ -52,7 +53,7 @@ Development
 
 ### Requirements
 
-- Puppet 3.7
+- Puppet 3.7 or later
 - librarian-puppet
 
 
