@@ -17,14 +17,14 @@ class mackerel_agent::install(
       }
     }
     'Debian': {
-      apt::key { "mackerel":
-        key => 'C2B48821',
+      apt::key { 'mackerel':
+        key        => 'C2B48821',
         key_source => $gpgkey_url
       }
-      apt::source { "mackerel":
-        location    => "http://apt.mackerel.io/debian/",
-        release     => "mackerel",
-        repos       => "contrib",
+      apt::source { 'mackerel':
+        location    => 'http://apt.mackerel.io/debian/',
+        release     => 'mackerel',
+        repos       => 'contrib',
         include_src => false
       }
     }
@@ -34,6 +34,6 @@ class mackerel_agent::install(
   }
 
   package { 'mackerel-agent':
-    ensure        => $ensure
+    ensure => $ensure
   }
 }
