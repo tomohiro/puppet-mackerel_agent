@@ -1,10 +1,18 @@
+# Bundler
 .bundle
+Gemfile.lock
+vendor
+
+# Librarian Puppet
 .tmp
 .librarian
+Puppetfile.lock
+modules/
+
+# Puppet module
+pkg
+
+# Development
 .vagrant
 .mackerel-api-key
-modules/
-vendor
-pkg
-Gemfile.lock
-Puppetfile.lock
+spec/fixtures
