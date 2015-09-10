@@ -6,3 +6,4 @@ cache: bundler
 script:
   - bundle exec rake lint
   - bundle exec rake validate
+  - bundle exec rake spec

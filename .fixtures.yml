@@ -1,0 +1,10 @@
+fixtures:
+  repositories:
+    "stdlib":
+      "repo": "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+      "ref": "4.8.0"
+    "apt":
+      "repo": "git://github.com/puppetlabs/puppetlabs-apt.git"
+      "ref": "2.1.1"
+  symlinks:
+    "mackerel_agent": "#{source_dir}"
