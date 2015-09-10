@@ -45,7 +45,8 @@ class { 'mackerel_agent':
 Limitations
 --------------------------------------------------------------------------------
 
-- RHEL/CentOS 6
+- RHEL 6
+- CentOS 6
 - Debian 7
 - Ubuntu 14.04
 
@@ -73,15 +74,16 @@ $ bundle install --path vendor/bundle
 $ bundle exec librarian-puppet install
 ```
 
-Put your mackerel API key:
+Run unit tests:
 
 ```sh
-$ echo 'your api key' > .mackerel-api-key
+$ bundle exec rake spec
 ```
 
-Run smoke test:
+Run smoke tests:
 
 ```sh
+$ echo 'your api key' > .mackerel-api-key # Put a your mackerel API key
 $ vagrant up
 $ vagrant provision
 ```
