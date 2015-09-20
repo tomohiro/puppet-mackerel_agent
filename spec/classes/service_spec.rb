@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe 'mackerel_agent::service' do
-  let(:facts) do
-    { :osfamily => 'RedHat' }
-  end
-
   context 'with running (defaults)' do
     it { should contain_service('mackerel-agent').with_ensure('running') }
   end

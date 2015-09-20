@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe 'mackerel_agent' do
-  let(:facts) do
-    { :osfamily => 'RedHat' }
-  end
-
   describe 'compile' do
     it { should compile }
     it { should compile.with_all_deps }
