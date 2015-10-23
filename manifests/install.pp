@@ -37,7 +37,11 @@ class mackerel_agent::install(
     ensure => $ensure
   }
 
-  file { '/etc/mackerel-agent/conf.d':
-    ensure => directory,
+  file {
+    [
+      '/etc/mackerel-agent',
+      '/etc/mackerel-agent/conf.d'
+    ]:
+      ensure => directory,
   }
 }
