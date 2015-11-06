@@ -35,10 +35,12 @@
 # Copyright 2014 - 2015 Tomohiro TAIRA
 #
 class mackerel_agent(
-  $ensure         = present,
-  $apikey         = undef,
-  $service_ensure = running,
-  $service_enable = true
+  $ensure            = present,
+  $apikey            = undef,
+  $service_ensure    = running,
+  $service_enable    = true,
+  $use_agent_plugins = undef,
+  $use_check_plugins = undef
 ) {
   validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
@@ -49,6 +51,8 @@ class mackerel_agent(
   } else {
     class { 'mackerel_agent::install':
       ensure => $ensure
+      use_agent_plugins => $use_agent_plugins,
+      use_check_plugins => $use_check_plugins
     }
 
     class { 'mackerel_agent::config':
