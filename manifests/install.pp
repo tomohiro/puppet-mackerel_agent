@@ -54,6 +54,9 @@ class mackerel_agent::install(
         ensure => absent
       }
     }
+    default: {
+      # Do nothing
+    }
   }
 
   case $use_check_plugins {
@@ -66,6 +69,9 @@ class mackerel_agent::install(
       package { 'mackarel-check-plugins':
         ensure => absent
       }
+    }
+    default: {
+      # Do nothing
     }
   }
 }
