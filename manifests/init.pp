@@ -50,7 +50,7 @@ class mackerel_agent(
     crit('apikey must be specified in the class paramerter.')
   } else {
     class { 'mackerel_agent::install':
-      ensure => $ensure
+      ensure            => $ensure,
       use_agent_plugins => $use_agent_plugins,
       use_check_plugins => $use_check_plugins
     }
