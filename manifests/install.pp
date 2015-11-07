@@ -45,12 +45,12 @@ class mackerel_agent::install(
 
   case $use_agent_plugins {
     true: {
-      package { 'mackarel-agent-plugins':
+      package { 'mackerel-agent-plugins':
         ensure => present
       }
     }
     false: {
-      package { 'mackarel-agent-plugins':
+      package { 'mackerel-agent-plugins':
         ensure => absent
       }
     }
@@ -61,12 +61,12 @@ class mackerel_agent::install(
 
   case $use_check_plugins {
     true: {
-      package { 'mackarel-check-plugins':
+      package { 'mackerel-check-plugins':
         ensure => present
       }
     }
     false: {
-      package { 'mackarel-check-plugins':
+      package { 'mackerel-check-plugins':
         ensure => absent
       }
     }
