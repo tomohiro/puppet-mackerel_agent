@@ -14,7 +14,7 @@ class { 'mackerel_agent':
   use_metrics_plugins => true,
   use_check_plugins   => true,
   metrics_plugins     => {
-    php-apc     => '/usr/local/bin/mackerel-plugin-php-apc',
+    apache2     => '/usr/local/bin/mackerel-plugin-apache2',
     php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
   },
   check_plugins       => {
