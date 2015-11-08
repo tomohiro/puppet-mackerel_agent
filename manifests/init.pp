@@ -20,10 +20,36 @@
 #   Whether you want to mackerel-agent daemon to start up at boot
 #   Defaults to true
 #
+# [*use_metrics_plugins*]
+#   Whether you want to use official metrics plugins
+#   Defaults to undefined
+#
+# [*use_check_plugins*]
+#   Whether you want to use official check plugins
+#   Defaults to undefined
+#
+# [*metrics_plugins*]
+#   Metics plugin parameters
+#   Defualts to empty hash
+#
+# [*check_plugins*]
+#   Check plugin parameters
+#   Defualts to empty hash
+#
 # === Examples
 #
 #  class { 'mackerel_agent':
-#    apikey => 'Your API Key'
+#    apikey              => 'Your API Key'
+#    use_metrics_plugins => true,
+#    use_check_plugins   => true,
+#    metrics_plugins     => {
+#      apache2     => '/usr/local/bin/mackerel-plugin-apache2',
+#      php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+#    },
+#    check_plugins       => {
+#      access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
+#      check_cron => '/usr/local/bin/check-procs -p crond'
+#    }
 #  }
 #
 # === Authors
