@@ -16,3 +16,6 @@ pkg
 .vagrant
 .mackerel-api-key
 spec/fixtures
+
+# Coveralls
+coverage
