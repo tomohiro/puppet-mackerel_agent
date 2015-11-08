@@ -1,9 +1,9 @@
 # == Class: mackerel_agent::install
 #
 class mackerel_agent::install(
-  $ensure = present,
-  $use_agent_plugins = undef,
-  $use_check_plugins = undef
+  $ensure              = present,
+  $use_metrics_plugins = undef,
+  $use_check_plugins   = undef
 ) {
   $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
 
@@ -43,7 +43,7 @@ class mackerel_agent::install(
     ensure => directory,
   }
 
-  case $use_agent_plugins {
+  case $use_metrics_plugins {
     true: {
       package { 'mackerel-agent-plugins':
         ensure => present
