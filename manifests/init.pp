@@ -20,10 +20,36 @@
 #   Whether you want to mackerel-agent daemon to start up at boot
 #   Defaults to true
 #
+# [*use_metrics_plugins*]
+#   Whether you want to use official metrics plugins
+#   Defaults to undefined
+#
+# [*use_check_plugins*]
+#   Whether you want to use official check plugins
+#   Defaults to undefined
+#
+# [*metrics_plugins*]
+#   Metics plugin parameters
+#   Defualts to empty hash
+#
+# [*check_plugins*]
+#   Check plugin parameters
+#   Defualts to empty hash
+#
 # === Examples
 #
 #  class { 'mackerel_agent':
-#    apikey => 'Your API Key'
+#    apikey              => 'Your API Key'
+#    use_metrics_plugins => true,
+#    use_check_plugins   => true,
+#    metrics_plugins     => {
+#      apache2     => '/usr/local/bin/mackerel-plugin-apache2',
+#      php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+#    },
+#    check_plugins       => {
+#      access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
+#      check_cron => '/usr/local/bin/check-procs -p crond'
+#    }
 #  }
 #
 # === Authors
@@ -35,25 +61,35 @@
 # Copyright 2014 - 2015 Tomohiro TAIRA
 #
 class mackerel_agent(
-  $ensure         = present,
-  $apikey         = undef,
-  $service_ensure = running,
-  $service_enable = true
+  $ensure              = present,
+  $apikey              = undef,
+  $service_ensure      = running,
+  $service_enable      = true,
+  $use_metrics_plugins = undef,
+  $use_check_plugins   = undef,
+  $metrics_plugins     = {},
+  $check_plugins       = {},
 ) {
   validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
   validate_bool($service_enable)
+  validate_hash($metrics_plugins)
+  validate_hash($check_plugins)
 
   if $apikey == undef {
     crit('apikey must be specified in the class paramerter.')
   } else {
     class { 'mackerel_agent::install':
-      ensure => $ensure
+      ensure              => $ensure,
+      use_metrics_plugins => $use_metrics_plugins,
+      use_check_plugins   => $use_check_plugins
     }
 
     class { 'mackerel_agent::config':
-      apikey  => $apikey,
-      require => Class['mackerel_agent::install']
+      apikey          => $apikey,
+      metrics_plugins => $metrics_plugins,
+      check_plugins   => $check_plugins,
+      require         => Class['mackerel_agent::install']
     }
 
     class { 'mackerel_agent::service':

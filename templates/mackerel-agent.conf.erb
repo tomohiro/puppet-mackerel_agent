@@ -17,9 +17,21 @@ include = "/etc/mackerel-agent/conf.d/*.conf"
 # post_metrics_buffer_size = 30           # max numbers of requests stored in buffer queue.
 
 # Configuration for Custom Metrics Plugins
-# see also: http://help-ja.mackerel.io/entry/advanced/custom-metrics
 #
-# [plugin.metrics.vmstat]
-# command = "ruby /path/to/plugins/metrics-vmstat.rb"
-# [plugin.metrics.curl]
-# command = "ruby /path/to/plugins/metrics-curl.rb"
+# followings are mackerel-agent-plugins
+#   help: http://help.mackerel.io/entry/howto/mackerel-agent-plugins
+#   repository: https://github.com/mackerelio/mackerel-agent-plugins
+<% @metrics_plugins.each do |plugin, command| %>
+[plugin.metrics.<%= plugin %>]
+command = "<%= command %>"
+<% end %>
+
+# Configuration for Custom Check Plugins
+#
+# followings are go-check-plugins
+#   help: http://help.mackerel.io/entry/howto/mackerel-check-plugins
+#   repository: https://github.com/mackerelio/go-check-plugins
+<% @check_plugins.each do |plugin, command| %>
+[plugin.checks.<%= plugin %>]
+command = "<%= command %>"
+<% end %>

@@ -13,4 +13,37 @@ describe 'mackerel_agent::install' do
 
     it { should contain_package('mackerel-agent').with_ensure('absent') }
   end
+
+  context 'with mackerel agent plugins' do
+    let(:params) do
+      { :use_metrics_plugins => true }
+    end
+
+    it { should contain_package('mackerel-agent-plugins').with_ensure('present') }
+  end
+
+  context 'without mackerel agent plugins' do
+    let(:params) do
+      { :use_metrics_plugins => false }
+    end
+
+    it { should contain_package('mackerel-agent-plugins').with_ensure('absent') }
+  end
+
+
+  context 'with mackerel check plugins' do
+    let(:params) do
+      { :use_check_plugins => true }
+    end
+
+    it { should contain_package('mackerel-check-plugins').with_ensure('present') }
+  end
+
+  context 'without mackerel check plugins' do
+    let(:params) do
+      { :use_check_plugins => false }
+    end
+
+    it { should contain_package('mackerel-check-plugins').with_ensure('absent') }
+  end
 end
