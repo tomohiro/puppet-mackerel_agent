@@ -37,8 +37,23 @@ Usage
 
 ```puppet
 class { 'mackerel_agent':
-  apikey => 'Your API Key'
+  apikey              => 'Your API Key',
+  use_metrics_plugins => true,
+  metrics_plugins     => {
+    apache2     => '/usr/local/bin/mackerel-plugin-apache2',
+    php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+  }
 }
+```
+
+### Hiera
+
+```yaml
+mackerel_agent::apikey: 'Your API Key'
+mackerel_agent::use_metrics_plugins: true
+mackerel_agent::use_metrics_plugins:
+  apache2: '/usr/local/bin/mackerel-plugin-apache2'
+  php-opcache: '/usr/local/bin/mackerel-plugin-php-opcache'
 ```
 
 
