@@ -12,5 +12,13 @@
 class { 'mackerel_agent':
   apikey              => $apikey,
   use_metrics_plugins => true,
-  use_check_plugins   => true
+  use_check_plugins   => true,
+  metrics_plugins     => {
+    php-apc     => '/usr/local/bin/mackerel-plugin-php-apc',
+    php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+  },
+  check_plugins       => {
+    access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
+    check_cron => '/usr/local/bin/check-procs -p crond'
+  }
 }

@@ -1,8 +1,10 @@
 # == Class: mackerel_agent::config
 #
 class mackerel_agent::config(
-  $ensure  = present,
-  $apikey  = undef,
+  $ensure          = present,
+  $apikey          = undef,
+  $metrics_plugins = {},
+  $check_plugins   = {}
 ) {
   file { 'mackerel-agent.conf':
     ensure  => $ensure,

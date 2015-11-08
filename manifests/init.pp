@@ -40,11 +40,15 @@ class mackerel_agent(
   $service_ensure      = running,
   $service_enable      = true,
   $use_metrics_plugins = undef,
-  $use_check_plugins   = undef
+  $use_check_plugins   = undef,
+  $metrics_plugins     = {},
+  $check_plugins       = {},
 ) {
   validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
   validate_bool($service_enable)
+  validate_hash($metrics_plugins)
+  validate_hash($check_plugins)
 
   if $apikey == undef {
     crit('apikey must be specified in the class paramerter.')
@@ -56,8 +60,10 @@ class mackerel_agent(
     }
 
     class { 'mackerel_agent::config':
-      apikey  => $apikey,
-      require => Class['mackerel_agent::install']
+      apikey          => $apikey,
+      metrics_plugins => $metrics_plugins,
+      check_plugins   => $check_plugins,
+      require         => Class['mackerel_agent::install']
     }
 
     class { 'mackerel_agent::service':
