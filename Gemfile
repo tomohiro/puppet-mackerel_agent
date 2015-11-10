@@ -9,5 +9,4 @@ gem 'librarian-puppet', '~> 2.2.0'
 gem 'metadata-json-lint', '~> 0.0.6'
 
 group :test, :development do
-  gem 'coveralls', require: false
 end

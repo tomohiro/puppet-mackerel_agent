@@ -1,6 +1,3 @@
-require 'coveralls'
-Coveralls.wear! { add_filter '/spec' }
-
 require 'puppetlabs_spec_helper/module_spec_helper'
 
 RSpec.configure do |c|
