@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-puppetversion = ENV.key?('PUPPET_VERSION') ? "= #{ENV['PUPPET_VERSION']}" : ['>= 3.7']
-gem 'puppet', puppetversion
+gem 'puppet', ENV['PUPPET_VERSION'] || '>= 3.7'
 gem 'facter', '>= 1.7.0'
 
 group :test, :development do
