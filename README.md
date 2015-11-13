@@ -39,11 +39,15 @@ Usage
 class { 'mackerel_agent':
   apikey              => 'Your API Key',
   use_metrics_plugins => true,
+  use_check_plugins   => true,
   metrics_plugins     => {
     apache2     => '/usr/local/bin/mackerel-plugin-apache2',
     php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+  },
+  check_plugins       => {
+    access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
+    check_cron => '/usr/local/bin/check-procs -p crond'
   }
-}
 ```
 
 ### Hiera
@@ -51,9 +55,13 @@ class { 'mackerel_agent':
 ```yaml
 mackerel_agent::apikey: 'Your API Key'
 mackerel_agent::use_metrics_plugins: true
+mackerel_agent::use_check_plugins: true
 mackerel_agent::metrics_plugins:
   apache2: '/usr/local/bin/mackerel-plugin-apache2'
   php-opcache: '/usr/local/bin/mackerel-plugin-php-opcache'
+mackerel_agent::check_plugins:
+  access_log: '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL'
+  check_cron: '/usr/local/bin/check-procs -p crond'
 ```
 
 
