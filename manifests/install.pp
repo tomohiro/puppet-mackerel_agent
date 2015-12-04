@@ -40,7 +40,8 @@ class mackerel_agent::install(
   }
 
   file { '/etc/mackerel-agent/conf.d':
-    ensure => directory,
+    ensure  => directory,
+    require => Package['mackerel-agent']
   }
 
   case $use_metrics_plugins {
