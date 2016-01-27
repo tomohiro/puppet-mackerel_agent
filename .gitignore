@@ -15,7 +15,11 @@ pkg
 # Development
 .vagrant
 .mackerel-api-key
+
+# Testing
 spec/fixtures
+log
+junit
 
 # Coveralls
 coverage
