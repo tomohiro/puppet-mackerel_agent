@@ -11,11 +11,15 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module to all hosts
     hosts.each do |host|
+      install_dev_puppet_module(
+        source: module_root,
+        ignore_list: ['modules'],
+        module_name: 'mackerel_agent'
+      )
 
       # Install dependencies
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
       on(host, puppet('module', 'install', 'puppetlabs-apt'))
-      on(host, puppet('module', 'install', 'tomohiro-mackerel_agent'))
     end
   end
 end
