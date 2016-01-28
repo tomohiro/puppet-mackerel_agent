@@ -1,35 +1,40 @@
-sudo: required
+sudo: false
 language: ruby
 
 cache: bundler
-
-services:
-  - docker
 
 script:
   - bundle exec rake lint
   - bundle exec rake validate
   - bundle exec rake spec
-  - bundle exec rake beaker
-
-rvm:
-  - 1.9.3
-  - 2.2.3
-
-env:
-  - PUPPET_VERSION='~> 3.7.0'
-  - PUPPET_VERSION='~> 3.8.0'
-  - PUPPET_VERSION='~> 4.0.0'
-  - PUPPET_VERSION='~> 4.1.0'
-  - PUPPET_VERSION='~> 4.2.0'
 
 matrix:
   fast_finish: true
-  exclude:
-    - rvm: 2.2.3
+
+  include:
+    # Unit tests
+    - rvm: 1.9.3
       env: PUPPET_VERSION='~> 3.7.0'
-    - rvm: 2.2.3
+    - rvm: 1.9.3
       env: PUPPET_VERSION='~> 3.8.0'
+    - rvm: 1.9.3
+      env: PUPPET_VERSION='~> 4.0.0'
+    - rvm: 1.9.3
+      env: PUPPET_VERSION='~> 4.1.0'
+    - rvm: 1.9.3
+      env: PUPPET_VERSION='~> 4.2.0'
+    - rvm: 2.3.0
+      env: PUPPET_VERSION='~> 4.0.0'
+    - rvm: 2.3.0
+      env: PUPPET_VERSION='~> 4.1.0'
+    - rvm: 2.3.0
+      env: PUPPET_VERSION='~> 4.2.0'
+
+    # Acceptance tests
+    - rvm: default
+      sudo: required
+      services: docker
+      script: bundle exec rake beaker
 
 notifications:
   email: false
