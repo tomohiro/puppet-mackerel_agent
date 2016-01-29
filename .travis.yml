@@ -34,6 +34,7 @@ matrix:
     - rvm: default
       sudo: required
       services: docker
+      env: BEAKER_set=centos-6-x64
       script: bundle exec rake beaker
 
 notifications:

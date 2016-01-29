@@ -1,7 +1,7 @@
 HOSTS:
-  centos-6-6:
+  centos-6-x64:
     platform: centos-6-x64
-    image: centos:6.6
+    image: centos:6
     hypervisor: docker
     docker_preserve_image: true
 CONFIG:
