@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'puppet', ENV['PUPPET_VERSION'] || '>= 3.7'
-gem 'facter', '>= 1.7.0'
+gem 'puppet', ENV['PUPPET_GEM_VERSION'] || '>= 3.7'
+gem 'facter', ENV['FACTER_GEM_VERSION'] || '>= 1.7.0'
 
 group :test, :development do
   # Unit tests
