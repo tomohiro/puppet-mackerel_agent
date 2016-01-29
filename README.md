@@ -117,7 +117,7 @@ Acceptance tests:
 
 ```sh
 $ export DOCKER_HOST=tcp://your-docker-host-ip:port
-$ bundle exec rake beaker
+$ BEAKER_set=centos-6-x64 bundle exec rake beaker
 ```
 
 
