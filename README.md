@@ -129,7 +129,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) guideline.
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2014 - 2015 Tomohiro TAIRA.
+&copy; 2014 - 2016 Tomohiro TAIRA.
 
 This project is licensed under the Apache License, Version 2.0.
 See [LICENSE](LICENSE) for details.
