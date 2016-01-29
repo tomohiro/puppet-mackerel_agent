@@ -1,7 +1,7 @@
 Puppet module for mackerel-agent
 ================================================================================
 
-[![Puppetforge](https://img.shields.io/puppetforge/v/tomohiro/mackerel_agent.svg?style=flat-square)](https://forge.puppetlabs.com/tomohiro/mackerel_agent)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/tomohiro/mackerel_agent.svg?style=flat-square)](https://forge.puppetlabs.com/tomohiro/mackerel_agent)
 [![Dependency Status](https://img.shields.io/gemnasium/Tomohiro/puppet-mackerel_agent.svg?style=flat-square)](https://gemnasium.com/Tomohiro/puppet-mackerel_agent)
 [![Build Status](https://img.shields.io/travis/Tomohiro/puppet-mackerel_agent.svg?style=flat-square)](https://travis-ci.org/Tomohiro/puppet-mackerel_agent)
 
@@ -25,7 +25,7 @@ This Puppet module install and configure [mackerel-agent](https://github.com/mac
 Setup
 --------------------------------------------------------------------------------
 
-Puppet module:
+Install via Puppet Forge:
 
 ```sh
 $ puppet module install tomohiro-mackerel_agent
@@ -68,10 +68,14 @@ mackerel_agent::check_plugins:
 Limitations
 --------------------------------------------------------------------------------
 
+These operation systems are supported.
+
 - RHEL 6
 - CentOS 6
 - Debian 7
 - Ubuntu 14.04
+
+The person who want to add an operating system to supported list should implement it himself.
 
 
 Development
@@ -83,12 +87,7 @@ Development
 - librarian-puppet
 
 
-### Contributing
-
-See [CONTRIBUTING](CONTRIBUTING.md) guideline.
-
-
-### Testing
+### Setup development environments
 
 Install dependencies:
 
@@ -97,19 +96,34 @@ $ bundle install --path vendor/bundle
 $ bundle exec librarian-puppet install
 ```
 
-Run unit tests:
-
-```sh
-$ bundle exec rake spec
-```
-
-Run smoke tests:
+You can run smoke tests:
 
 ```sh
 $ echo 'your api key' > .mackerel-api-key # Put a your mackerel API key
 $ vagrant up
 $ vagrant provision
 ```
+
+
+### Testing
+
+Unit tests:
+
+```sh
+$ bundle exec rake spec
+```
+
+Acceptance tests:
+
+```sh
+$ export DOCKER_HOST=tcp://your-docker-host-ip:port
+$ bundle exec rake beaker
+```
+
+
+### Contributing
+
+See [CONTRIBUTING](CONTRIBUTING.md) guideline.
 
 
 LICENSE
