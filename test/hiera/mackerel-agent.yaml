@@ -1,0 +1,10 @@
+---
+mackerel_agent::apikey: 'dummy-api-key'
+mackerel_agent::use_metrics_plugins: true
+mackerel_agent::use_check_plugins: true
+mackerel_agent::metrics_plugins:
+  apache2: '/usr/local/bin/mackerel-plugin-apache2'
+  php-opcache: '/usr/local/bin/mackerel-plugin-php-opcache'
+mackerel_agent::check_plugins:
+  access_log: '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL'
+  check_cron: '/usr/local/bin/check-procs -p crond'
