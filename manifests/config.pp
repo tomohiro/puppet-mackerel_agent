@@ -6,6 +6,11 @@ class mackerel_agent::config(
   $metrics_plugins = {},
   $check_plugins   = {}
 ) {
+  file { '/etc/mackerel-agent/conf.d':
+    ensure  => directory,
+    require => Package['mackerel-agent']
+  }
+
   file { 'mackerel-agent.conf':
     ensure  => $ensure,
     path    => '/etc/mackerel-agent/mackerel-agent.conf',
