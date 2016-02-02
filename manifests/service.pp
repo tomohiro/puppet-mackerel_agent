@@ -5,7 +5,8 @@ class mackerel_agent::service(
   $enable = true,
 ) {
   service { 'mackerel-agent':
-    ensure => $ensure,
-    enable => $enable
+    ensure     => $ensure,
+    enable     => $enable,
+    hasrestart => true
   }
 }
