@@ -15,7 +15,8 @@ class mackerel_agent::install(
         descr    => 'mackerel-agent',
         enabled  => 1,
         gpgkey   => $gpgkey_url,
-        gpgcheck => 1
+        gpgcheck => 1,
+        before   => Package['mackerel-agent']
       }
     }
     'Debian': {
@@ -31,13 +32,14 @@ class mackerel_agent::install(
         include  => {
           source => false
         },
-        require  => Apt::Key['mackerel']
+        require  => Apt::Key['mackerel'],
+        before   => Package['mackerel-agent']
       }
     }
     default: {
       # Do nothing
     }
-  } ->
+  }
 
   package { 'mackerel-agent':
     ensure => $ensure
