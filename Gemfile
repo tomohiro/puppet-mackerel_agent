@@ -13,4 +13,7 @@ group :test, :development do
   # Acceptance tests
   gem 'beaker'
   gem 'beaker-rspec'
+
+  # Puppet module utils
+  gem 'puppet-blacksmith'
 end
