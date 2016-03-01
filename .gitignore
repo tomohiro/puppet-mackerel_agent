@@ -23,3 +23,6 @@ junit
 
 # Coveralls
 coverage
+
+# Direnv
+.envrc
