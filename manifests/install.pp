@@ -56,6 +56,11 @@ class mackerel_agent::install(
         ensure => absent
       }
     }
+    'latest': {
+      package { 'mackerel-agent-plugins':
+        ensure => latest
+      }
+    }
     default: {
       # Do nothing
     }
@@ -70,6 +75,11 @@ class mackerel_agent::install(
     false: {
       package { 'mackerel-check-plugins':
         ensure => absent
+      }
+    }
+    'latest': {
+      package { 'mackerel-check-plugins':
+        ensure => latest
       }
     }
     default: {
