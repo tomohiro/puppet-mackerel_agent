@@ -29,6 +29,13 @@ describe 'mackerel_agent::install' do
     it { should contain_package('mackerel-agent-plugins').with_ensure('absent') }
   end
 
+  context 'with latest mackerel agent plugins' do
+    let(:params) do
+      { :use_metrics_plugins => 'latest' }
+    end
+
+    it { should contain_package('mackerel-agent-plugins').with_ensure('latest') }
+  end
 
   context 'with mackerel check plugins' do
     let(:params) do
@@ -44,5 +51,13 @@ describe 'mackerel_agent::install' do
     end
 
     it { should contain_package('mackerel-check-plugins').with_ensure('absent') }
+  end
+
+  context 'with latest mackerel check plugins' do
+    let(:params) do
+      { :use_check_plugins => 'latest' }
+    end
+
+    it { should contain_package('mackerel-check-plugins').with_ensure('latest') }
   end
 end
