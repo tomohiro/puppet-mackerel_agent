@@ -15,5 +15,5 @@ group :test, :development do
   gem 'beaker-rspec'
 
   # Puppet module utils
-  gem 'puppet-blacksmith'
+  gem 'puppet-blacksmith', github: 'voxpupuli/puppet-blacksmith'
 end
