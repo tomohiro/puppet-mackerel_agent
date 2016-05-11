@@ -48,17 +48,20 @@ class mackerel_agent::install(
   case $use_metrics_plugins {
     true: {
       package { 'mackerel-agent-plugins':
-        ensure => present
+        ensure  => present,
+        require => Yumrepo['mackerel'],
       }
     }
     false: {
       package { 'mackerel-agent-plugins':
-        ensure => absent
+        ensure  => absent,
+        require => Yumrepo['mackerel'],
       }
     }
     'latest': {
       package { 'mackerel-agent-plugins':
-        ensure => latest
+        ensure  => latest,
+        require => Yumrepo['mackerel'],
       }
     }
     default: {
@@ -69,17 +72,20 @@ class mackerel_agent::install(
   case $use_check_plugins {
     true: {
       package { 'mackerel-check-plugins':
-        ensure => present
+        ensure  => present,
+        require => Yumrepo['mackerel'],
       }
     }
     false: {
       package { 'mackerel-check-plugins':
-        ensure => absent
+        ensure  => absent,
+        require => Yumrepo['mackerel'],
       }
     }
     'latest': {
       package { 'mackerel-check-plugins':
-        ensure => latest
+        ensure  => latest,
+        require => Yumrepo['mackerel'],
       }
     }
     default: {
