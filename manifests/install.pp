@@ -16,8 +16,9 @@ class mackerel_agent::install(
         enabled  => 1,
         gpgkey   => $gpgkey_url,
         gpgcheck => 1,
-        before   => Package['mackerel-agent']
       }
+
+      $pkg_require = Yumrepo['mackerel']
     }
     'Debian': {
       apt::key { 'mackerel':
@@ -33,35 +34,38 @@ class mackerel_agent::install(
           source => false
         },
         require  => Apt::Key['mackerel'],
-        before   => Package['mackerel-agent']
       }
+
+      $pkg_require = Class['apt::update']
     }
     default: {
       # Do nothing
+      $pkg_require = undef
     }
   }
 
   package { 'mackerel-agent':
-    ensure => $ensure
+    ensure  => $ensure,
+    require => $pkg_require,
   }
 
   case $use_metrics_plugins {
     true: {
       package { 'mackerel-agent-plugins':
         ensure  => present,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     false: {
       package { 'mackerel-agent-plugins':
         ensure  => absent,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     'latest': {
       package { 'mackerel-agent-plugins':
         ensure  => latest,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     default: {
@@ -73,19 +77,19 @@ class mackerel_agent::install(
     true: {
       package { 'mackerel-check-plugins':
         ensure  => present,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     false: {
       package { 'mackerel-check-plugins':
         ensure  => absent,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     'latest': {
       package { 'mackerel-check-plugins':
         ensure  => latest,
-        require => Yumrepo['mackerel'],
+        require => $pkg_require,
       }
     }
     default: {
