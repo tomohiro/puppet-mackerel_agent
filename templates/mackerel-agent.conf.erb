@@ -6,6 +6,10 @@ pidfile = "./pid"
 root = "."
 verbose = false
 
+<% if @roles %>
+roles = [<%= @roles.map {|r| %{"#{r}"} }.join(', ') %>]
+<% end %>
+
 # Include other config files
 include = "/etc/mackerel-agent/conf.d/*.conf"
 

@@ -38,6 +38,7 @@ Usage
 ```puppet
 class { 'mackerel_agent':
   apikey              => 'Your API Key',
+  roles               => ['service:web', 'service:database']
   use_metrics_plugins => true,
   use_check_plugins   => true,
   metrics_plugins     => {
@@ -54,6 +55,9 @@ class { 'mackerel_agent':
 
 ```yaml
 mackerel_agent::apikey: 'Your API Key'
+mackerel_agent::roles:
+  - 'service:web'
+  - 'service:database'
 mackerel_agent::use_metrics_plugins: true
 mackerel_agent::use_check_plugins: true
 mackerel_agent::metrics_plugins:
