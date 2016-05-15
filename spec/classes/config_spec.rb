@@ -13,4 +13,12 @@ describe 'mackerel_agent::config' do
 
     it { should contain_file('mackerel-agent.conf').with_ensure('absent') }
   end
+
+  context 'with roles' do
+    let(:params) do
+      { :roles => %w[service:web service:database] }
+    end
+
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^roles = \["service:web", "service:database"\]$}) }
+  end
 end
