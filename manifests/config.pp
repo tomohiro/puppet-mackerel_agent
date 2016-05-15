@@ -3,6 +3,7 @@
 class mackerel_agent::config(
   $ensure          = present,
   $apikey          = undef,
+  $roles           = undef,
   $metrics_plugins = {},
   $check_plugins   = {}
 ) {
