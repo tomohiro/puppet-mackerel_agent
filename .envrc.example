@@ -1,4 +1,7 @@
 # https://github.com/voxpupuli/puppet-blacksmith#push-a-module-to-the-puppet-forge
-export BLACKSMITH_FORGE_URL=https://forgeapi.puppetlabs.com
-export BLACKSMITH_FORGE_USERNAME=
-export BLACKSMITH_FORGE_PASSWORD=
+export BLACKSMITH_FORGE_URL="https://forgeapi.puppetlabs.com"
+export BLACKSMITH_FORGE_USERNAME=""
+export BLACKSMITH_FORGE_PASSWORD=""
+
+# Mackerel API KEY
+export MACKEREL_API_KEY=""

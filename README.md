@@ -103,7 +103,7 @@ $ bundle exec librarian-puppet install
 You can run smoke tests:
 
 ```sh
-$ echo 'your api key' > .mackerel-api-key # Put a your mackerel API key
+$ export MACKEREL_API_KEY="your api key" # Export a your mackerel API key
 $ vagrant up
 $ vagrant provision
 ```
