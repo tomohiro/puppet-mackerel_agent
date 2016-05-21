@@ -44,7 +44,7 @@ end
 
 # Read mackerel api key from file to smoke testing.
 # This copied from https://github.com/mackerelio/cookbook-mackerel-agent
-apikey = File.read('.mackerel-api-key').chomp!
+apikey = File.read('.mackerel-api-key').chomp! || ENV['MACKERERL_API_KEY']
 
 SUPPORTING_PLATFORMS = {
   centos: 'puppetlabs/centos-6.6-64-puppet',
