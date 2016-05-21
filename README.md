@@ -49,6 +49,7 @@ class { 'mackerel_agent':
     access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
     check_cron => '/usr/local/bin/check-procs -p crond'
   }
+}
 ```
 
 ### Hiera
