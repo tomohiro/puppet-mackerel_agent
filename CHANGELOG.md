@@ -1,6 +1,14 @@
 CHANGELOG
 ================================================================================
 
+
+0.4.4 (June 02, 2016)
+--------------------------------------------------------------------------------
+
+- Support roles [GH-15](https://github.com/Tomohiro/puppet-mackerel_agent/pull/15)
+- Fix broken dependency of mackerel plugins installation process [GH-13](https://github.com/Tomohiro/puppet-mackerel_agent/pull/13) [GH-14](https://github.com/Tomohiro/puppet-mackerel_agent/pull/14)
+
+
 0.4.3 (March 15, 2016)
 --------------------------------------------------------------------------------
 
