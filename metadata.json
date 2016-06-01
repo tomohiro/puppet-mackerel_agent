@@ -1,6 +1,6 @@
 {
   "name": "tomohiro-mackerel_agent",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "author": "Tomohiro TAIRA",
   "summary": "Install and configure mackerel-agent",
   "license": "Apache-2.0",
