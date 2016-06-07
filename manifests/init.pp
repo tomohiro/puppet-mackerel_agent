@@ -16,6 +16,10 @@
 #   Name of roles to which the server is assigned
 #   Defaults to undefined
 #
+# [*host_status*]
+#   Set the host's status
+#   Defaults to undefined
+#
 # [*service_ensure*]
 #   Whether you want to mackerel-agent daemon to start up
 #   Defaults to running
@@ -43,8 +47,12 @@
 # === Examples
 #
 #  class { 'mackerel_agent':
-#    apikey              => 'Your API Key'
-#    roles               => ['service:web', 'service:database']
+#    apikey              => 'Your API Key',
+#    roles               => ['service:web', 'service:database'],
+#    host_status         => {
+#      on_start => 'working',
+#      on_stop  => 'poweroff'
+#    },
 #    use_metrics_plugins => true,
 #    use_check_plugins   => true,
 #    metrics_plugins     => {
@@ -69,6 +77,7 @@ class mackerel_agent(
   $ensure              = present,
   $apikey              = undef,
   $roles               = undef,
+  $host_status         = undef,
   $service_ensure      = running,
   $service_enable      = true,
   $use_metrics_plugins = undef,
@@ -86,6 +95,10 @@ class mackerel_agent(
     validate_array($roles)
   }
 
+  if $host_status != undef {
+    validate_hash($host_status)
+  }
+
   if $apikey == undef {
     crit('apikey must be specified in the class paramerter.')
   } else {
@@ -98,6 +111,7 @@ class mackerel_agent(
     class { 'mackerel_agent::config':
       apikey          => $apikey,
       roles           => $roles,
+      host_status     => $host_status,
       metrics_plugins => $metrics_plugins,
       check_plugins   => $check_plugins,
       require         => Class['mackerel_agent::install']

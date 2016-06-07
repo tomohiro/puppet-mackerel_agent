@@ -13,6 +13,12 @@ roles = [<%= @roles.map {|r| %{"#{r}"} }.join(', ') %>]
 # Include other config files
 include = "/etc/mackerel-agent/conf.d/*.conf"
 
+<% if @host_status -%>
+[host_status]
+on_start = "<%= @host_status['on_start'] %>"
+on_stop  = "<%= @host_status['on_stop'] %>"
+<% end %>
+
 # Configuration for connection
 # [connection]
 # post_metrics_dequeue_delay_seconds = 30 # delay for dequeuing from buffer queue (max value: 59)
