@@ -38,7 +38,11 @@ Usage
 ```puppet
 class { 'mackerel_agent':
   apikey              => 'Your API Key',
-  roles               => ['service:web', 'service:database']
+  roles               => ['service:web', 'service:database'],
+  host_status         => {
+    on_start => 'working',
+    on_stop  => 'poweroff'
+  },
   use_metrics_plugins => true,
   use_check_plugins   => true,
   metrics_plugins     => {
@@ -59,6 +63,9 @@ mackerel_agent::apikey: 'Your API Key'
 mackerel_agent::roles:
   - 'service:web'
   - 'service:database'
+mackerel_agent::host_status:
+  on_start: working
+  on_stop: poweroff
 mackerel_agent::use_metrics_plugins: true
 mackerel_agent::use_check_plugins: true
 mackerel_agent::metrics_plugins:

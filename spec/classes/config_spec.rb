@@ -21,4 +21,12 @@ describe 'mackerel_agent::config' do
 
     it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^roles = \["service:web", "service:database"\]$}) }
   end
+
+  context 'with host_status' do
+    let(:params) do
+      { :host_status => {'on_start' => 'working', 'on_stop' => 'poweroff'} }
+    end
+
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[host_status\]\non_start = "working"\non_stop  = "poweroff"$}) }
+  end
 end
