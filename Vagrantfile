@@ -42,9 +42,8 @@ module VagrantPlugins
   end
 end
 
-# Read mackerel api key from file to smoke testing.
-# This copied from https://github.com/mackerelio/cookbook-mackerel-agent
-apikey = ENV['MACKERERL_API_KEY'] || File.read('.mackerel-api-key').chomp!
+# Read mackerel api key from environment variable to smoke testing.
+apikey = ENV['MACKERERL_API_KEY']
 
 SUPPORTING_PLATFORMS = {
   centos: 'puppetlabs/centos-6.6-64-puppet',
