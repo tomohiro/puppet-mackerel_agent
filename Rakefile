@@ -3,7 +3,7 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'puppet_blacksmith/rake_tasks'
 
 PuppetLint.configuration.fail_on_warnings = true
-PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp']
+PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp', 'vendor/**/*.pp']
 
 # Use librarian-puppet to manage fixtures instead of .fixtures.yml.
 # Offers more possibilities like explicit version management, forge downloads...
