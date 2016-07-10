@@ -14,7 +14,6 @@ pkg
 
 # Development
 .vagrant
-.mackerel-api-key
 
 # Testing
 spec/fixtures
