@@ -14,7 +14,7 @@ class mackerel_agent::install(
           $baseurl = 'http://yum.mackerel.io/amznlinux/$releasever/$basearch'
         }
         default: {
-          $baseurl = 'http://yum.mackerel.io/centos/$releasever/$basearch'
+          $baseurl = 'http://yum.mackerel.io/centos/$basearch'
         }
       }
 
