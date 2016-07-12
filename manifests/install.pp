@@ -9,9 +9,18 @@ class mackerel_agent::install(
 
   case $::osfamily {
     'RedHat': {
+      case $::operatingsystem {
+        'Amazon': {
+          $baseurl = 'http://yum.mackerel.io/amznlinux/$releasever/$basearch'
+        }
+        default: {
+          $baseurl = 'http://yum.mackerel.io/centos/$basearch'
+        }
+      }
+
       yumrepo { 'mackerel':
         name     => 'mackerel',
-        baseurl  => "http://yum.mackerel.io/centos/${::architecture}",
+        baseurl  => $baseurl,
         descr    => 'mackerel-agent',
         enabled  => 1,
         gpgkey   => $gpgkey_url,
