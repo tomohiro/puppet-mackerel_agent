@@ -61,8 +61,8 @@
 #    use_metrics_plugins => true,
 #    use_check_plugins   => true,
 #    metrics_plugins     => {
-#      apache2           => '/usr/local/bin/mackerel-plugin-apache2',
-#      php-opcache       => '/usr/local/bin/mackerel-plugin-php-opcache'
+#      apache2     => '/usr/local/bin/mackerel-plugin-apache2',
+#      php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
 #    },
 #    check_plugins       => {
 #      access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
