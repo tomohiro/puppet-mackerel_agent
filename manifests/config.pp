@@ -5,6 +5,7 @@ class mackerel_agent::config(
   $apikey          = undef,
   $roles           = undef,
   $host_status     = undef,
+  $filesystems     = undef,
   $metrics_plugins = {},
   $check_plugins   = {}
 ) {

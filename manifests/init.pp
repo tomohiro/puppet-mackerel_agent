@@ -20,6 +20,10 @@
 #   Set the host's status
 #   Defaults to undefined
 #
+# [*filesystems*]
+#   Set the ignore filesystems 
+#   Defaults to undefined
+#
 # [*service_ensure*]
 #   Whether you want to mackerel-agent daemon to start up
 #   Defaults to running
@@ -53,11 +57,12 @@
 #      on_start => 'working',
 #      on_stop  => 'poweroff'
 #    },
+#    filesystems         => 'ignore = "/dev/ram.*"'
 #    use_metrics_plugins => true,
 #    use_check_plugins   => true,
 #    metrics_plugins     => {
-#      apache2     => '/usr/local/bin/mackerel-plugin-apache2',
-#      php-opcache => '/usr/local/bin/mackerel-plugin-php-opcache'
+#      apache2           => '/usr/local/bin/mackerel-plugin-apache2',
+#      php-opcache       => '/usr/local/bin/mackerel-plugin-php-opcache'
 #    },
 #    check_plugins       => {
 #      access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
@@ -78,6 +83,7 @@ class mackerel_agent(
   $apikey              = undef,
   $roles               = undef,
   $host_status         = undef,
+  $filesystems         = undef,
   $service_ensure      = running,
   $service_enable      = true,
   $use_metrics_plugins = undef,
@@ -99,6 +105,10 @@ class mackerel_agent(
     validate_hash($host_status)
   }
 
+  if $filesystems != undef {
+    validate_string($filesystems)
+  }
+
   if $apikey == undef {
     crit('apikey must be specified in the class paramerter.')
   } else {
@@ -112,6 +122,7 @@ class mackerel_agent(
       apikey          => $apikey,
       roles           => $roles,
       host_status     => $host_status,
+      filesystems     => $filesystems,
       metrics_plugins => $metrics_plugins,
       check_plugins   => $check_plugins,
       require         => Class['mackerel_agent::install']
