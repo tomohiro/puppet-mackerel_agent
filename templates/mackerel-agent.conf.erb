@@ -19,9 +19,9 @@ on_start = "<%= @host_status['on_start'] %>"
 on_stop  = "<%= @host_status['on_stop'] %>"
 <% end %>
 
-<% if @filesystems -%>
+<% if @ignore_filesystems -%>
 [filesystems]
-ignore = "<%= @filesystems %>"
+ignore = "<%= @ignore_filesystems %>"
 <% end %>
 
 # Configuration for connection

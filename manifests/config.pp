@@ -1,13 +1,13 @@
 # == Class: mackerel_agent::config
 #
 class mackerel_agent::config(
-  $ensure          = present,
-  $apikey          = undef,
-  $roles           = undef,
-  $host_status     = undef,
-  $filesystems     = undef,
-  $metrics_plugins = {},
-  $check_plugins   = {}
+  $ensure             = present,
+  $apikey             = undef,
+  $roles              = undef,
+  $host_status        = undef,
+  $ignore_filesystems = undef,
+  $metrics_plugins    = {},
+  $check_plugins      = {}
 ) {
   file { '/etc/mackerel-agent/conf.d':
     ensure  => directory,

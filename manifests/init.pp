@@ -20,7 +20,7 @@
 #   Set the host's status
 #   Defaults to undefined
 #
-# [*filesystems*]
+# [*ignore_filesystems*]
 #   Set the ignore filesystems 
 #   Defaults to undefined
 #
@@ -57,7 +57,7 @@
 #      on_start => 'working',
 #      on_stop  => 'poweroff'
 #    },
-#    filesystems         => 'ignore = "/dev/ram.*"'
+#    ignore_filesystems  => 'ignore = "/dev/ram.*"'
 #    use_metrics_plugins => true,
 #    use_check_plugins   => true,
 #    metrics_plugins     => {
@@ -83,7 +83,7 @@ class mackerel_agent(
   $apikey              = undef,
   $roles               = undef,
   $host_status         = undef,
-  $filesystems         = undef,
+  $ignore_filesystems  = undef,
   $service_ensure      = running,
   $service_enable      = true,
   $use_metrics_plugins = undef,
@@ -105,8 +105,8 @@ class mackerel_agent(
     validate_hash($host_status)
   }
 
-  if $filesystems != undef {
-    validate_string($filesystems)
+  if $ignore_filesystems != undef {
+    validate_string($ignore_filesystems)
   }
 
   if $apikey == undef {
@@ -119,13 +119,13 @@ class mackerel_agent(
     }
 
     class { 'mackerel_agent::config':
-      apikey          => $apikey,
-      roles           => $roles,
-      host_status     => $host_status,
-      filesystems     => $filesystems,
-      metrics_plugins => $metrics_plugins,
-      check_plugins   => $check_plugins,
-      require         => Class['mackerel_agent::install']
+      apikey             => $apikey,
+      roles              => $roles,
+      host_status        => $host_status,
+      ignore_filesystems => $ignore_filesystems,
+      metrics_plugins    => $metrics_plugins,
+      check_plugins      => $check_plugins,
+      require            => Class['mackerel_agent::install']
     }
 
     class { 'mackerel_agent::service':

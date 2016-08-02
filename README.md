@@ -43,7 +43,7 @@ class { 'mackerel_agent':
     on_start => 'working',
     on_stop  => 'poweroff'
   },
-  filesystems         => '/dev/ram.*',
+  ignore_filesystems  => '/dev/ram.*',
   use_metrics_plugins => true,
   use_check_plugins   => true,
   metrics_plugins     => {
@@ -67,7 +67,7 @@ mackerel_agent::roles:
 mackerel_agent::host_status:
   on_start: working
   on_stop: poweroff
-mackerel_agent::filesystems: '/dev/ram.*'
+mackerel_agent::ignore_filesystems: '/dev/ram.*'
 mackerel_agent::use_metrics_plugins: true
 mackerel_agent::use_check_plugins: true
 mackerel_agent::metrics_plugins:
