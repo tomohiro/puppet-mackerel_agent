@@ -29,4 +29,12 @@ describe 'mackerel_agent::config' do
 
     it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[host_status\]\non_start = "working"\non_stop  = "poweroff"$}) }
   end
+
+  context 'with ignore_filesystems' do
+    let(:params) do
+      { :ignore_filesystems => '/dev/ram.*' }
+    end
+
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[filesystems\]\nignore = "/dev/ram.*"$}) }
+  end
 end
