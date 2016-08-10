@@ -1,6 +1,13 @@
 CHANGELOG
 ================================================================================
 
+0.4.7 (Aug 10, 2016)
+--------------------------------------------------------------------------------
+
+- Support Amazon Linux [GH-19](https://github.com/Tomohiro/puppet-mackerel_agent/pull/19)
+- Add new parameter `ignore_filesystems` [GH-20](https://github.com/Tomohiro/puppet-mackerel_agent/pull/20)
+
+
 0.4.6 (June 08, 2016)
 --------------------------------------------------------------------------------
 
