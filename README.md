@@ -53,6 +53,12 @@ class { 'mackerel_agent':
   check_plugins       => {
     access_log => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL',
     check_cron => '/usr/local/bin/check-procs -p crond'
+    check_ssh  => {
+      command               => 'ruby /path/to/check-ssh.rb',
+      notification_interval => '60',
+      max_check_attempts    => '3',
+      check_interval        => '5'
+    }
   }
 }
 ```
@@ -76,6 +82,11 @@ mackerel_agent::metrics_plugins:
 mackerel_agent::check_plugins:
   access_log: '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL'
   check_cron: '/usr/local/bin/check-procs -p crond'
+  ssh:
+    command: 'ruby /path/to/check-ssh.rb'
+    notification_interval: '60'
+    max_check_attempts: '3'
+    check_interval: '5'
 ```
 
 

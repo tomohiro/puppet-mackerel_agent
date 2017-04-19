@@ -46,7 +46,17 @@ command = "<%= command %>"
 # followings are go-check-plugins
 #   help: http://help.mackerel.io/entry/howto/mackerel-check-plugins
 #   repository: https://github.com/mackerelio/go-check-plugins
-<% @check_plugins.each do |plugin, command| %>
+<% @check_plugins.each do |plugin, parameters| %>
 [plugin.checks.<%= plugin %>]
-command = "<%= command %>"
+<% if parameters.is_a?(Hash) -%>
+<% parameters.each do |param, data| -%>
+<% if data =~ /^[0-9]+$/ -%>
+<%= param %> = <%= data %>
+<% else -%>
+<%= param %> = "<%= data %>"
+<% end -%>
+<% end -%>
+<% else -%>
+command = "<%= parameters %>"
+<% end -%>
 <% end %>
