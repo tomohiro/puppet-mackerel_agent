@@ -49,7 +49,7 @@ describe 'mackerel_agent::config' do
     let(:params) do
       { :check_plugins => { 'ssh' => { 'command' => 'ruby /path/to/check-ssh.rb', 'notification_interval' => '6', 'max_check_attempts' => '3', 'check_interval' => '5'} } }
     end
-    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[plugin.checks.*\]\ncommand = \".*\"\nnotification_interval = \".*\"\nmax_check_attempts = \".*\"\ncheck_interval = \".*\"$}) }
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[plugin.checks.*\]\ncommand = \".*\"\nnotification_interval = .*\nmax_check_attempts = .*\ncheck_interval = .*$}) }
   end
 
 end
