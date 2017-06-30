@@ -37,4 +37,19 @@ describe 'mackerel_agent::config' do
 
     it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[filesystems\]\nignore = "/dev/ram.*"$}) }
   end
+
+  context 'with check_plugins' do
+    let(:params) do
+      { :check_plugins => { 'access_log' => '/usr/local/bin/check-log --file /var/log/access.log --pattern FATAL' } }
+    end
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[plugin.checks.*\]\ncommand = \".*\"$}) }
+  end
+
+  context 'with check_plugins on some parameters' do
+    let(:params) do
+      { :check_plugins => { 'ssh' => { 'command' => 'ruby /path/to/check-ssh.rb', 'notification_interval' => '6', 'max_check_attempts' => '3', 'check_interval' => '5'} } }
+    end
+    it { should contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[plugin.checks.*\]\ncommand = \".*\"\nnotification_interval = .*\nmax_check_attempts = .*\ncheck_interval = .*$}) }
+  end
+
 end
