@@ -20,4 +20,14 @@ describe 'mackerel_agent' do
       it { should compile }
     end
   end
+
+  describe 'unsupporting operating systems validation' do
+    context 'on Darwin has not been supported' do
+      let(:facts) do
+        { :osfamily => 'Windows' }
+      end
+
+      it { should_not compile }
+    end
+  end
 end
