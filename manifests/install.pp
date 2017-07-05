@@ -30,19 +30,18 @@ class mackerel_agent::install(
       $pkg_require = Yumrepo['mackerel']
     }
     'Debian': {
-      apt::key { 'mackerel':
-        id     => '2748FD61027D357542F8394DF92F673FC2B48821',
-        source => $gpgkey_url
-      }
 
       apt::source { 'mackerel':
         location => 'http://apt.mackerel.io/debian/',
         release  => 'mackerel',
         repos    => 'contrib',
+        key      =>  {
+          id     => '2748FD61027D357542F8394DF92F673FC2B48821',
+          source => $gpgkey_url
+        },
         include  => {
           source => false
         },
-        require  => Apt::Key['mackerel'],
       }
 
       $pkg_require = Class['apt::update']
