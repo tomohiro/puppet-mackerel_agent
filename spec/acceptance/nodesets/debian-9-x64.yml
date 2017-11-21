@@ -4,6 +4,8 @@ HOSTS:
     image: debian:stretch
     hypervisor: docker
     docker_preserve_image: true
+    docker_image_commands:
+      - 'apt-get install -y wget'
 CONFIG:
   type: foss
   log_level: debug
