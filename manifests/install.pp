@@ -5,16 +5,22 @@ class mackerel_agent::install(
   $use_metrics_plugins = undef,
   $use_check_plugins   = undef
 ) {
-  $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
 
   case $::osfamily {
     'RedHat': {
       case $::operatingsystem {
         'Amazon': {
           $baseurl = 'http://yum.mackerel.io/amznlinux/$releasever/$basearch'
+          $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
         }
         default: {
-          $baseurl = 'http://yum.mackerel.io/centos/$basearch'
+          if $::operatingsystemmajrelease == '6' {
+            $baseurl = 'http://yum.mackerel.io/centos/$basearch'
+            $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+          } else {
+            $baseurl = 'http://yum.mackerel.io/v2/$basearch'
+            $gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
+          }
         }
       }
 
@@ -30,13 +36,40 @@ class mackerel_agent::install(
       $pkg_require = Yumrepo['mackerel']
     }
     'Debian': {
+      case $::operatingsystem {
+        'Debian': {
+          if $::operatingsystemmajrelease == '7' {
+            $location = 'http://apt.mackerel.io/debian/'
+            $id = '2748FD61027D357542F8394DF92F673FC2B48821'
+            $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+          } else {
+            $location = 'http://apt.mackerel.io/v2/'
+            $id = '9DD9479D06BAA71322803AC166332B78417E73EA'
+            $gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
+          }
+        }
+        'Ubuntu': {
+          if $::operatingsystemmajrelease == '14.04' {
+            $location = 'http://apt.mackerel.io/debian/'
+            $id = '2748FD61027D357542F8394DF92F673FC2B48821'
+            $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+          } else {
+            $location = 'http://apt.mackerel.io/v2/'
+            $id = '9DD9479D06BAA71322803AC166332B78417E73EA'
+            $gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
+          }
+        }
+        default: {
+          # Do nothing
+        }
+      }
 
       apt::source { 'mackerel':
-        location => 'http://apt.mackerel.io/debian/',
+        location => $location,
         release  => 'mackerel',
         repos    => 'contrib',
         key      =>  {
-          id     => '2748FD61027D357542F8394DF92F673FC2B48821',
+          id     => $id,
           source => $gpgkey_url
         },
         include  => {

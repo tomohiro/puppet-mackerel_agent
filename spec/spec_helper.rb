@@ -5,5 +5,6 @@ RSpec.configure do |c|
     :architecture => 'amd64',
     :osfamily => 'RedHat',
     :operatingsystem => 'CentOS',
+    :operatingsystemmajrelease => '7',
   }
 end
