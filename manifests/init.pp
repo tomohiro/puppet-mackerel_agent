@@ -91,22 +91,22 @@ class mackerel_agent(
   $metrics_plugins     = {},
   $check_plugins       = {},
 ) {
-  validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
-  validate_string($apikey)
-  validate_bool($service_enable)
-  validate_hash($metrics_plugins)
-  validate_hash($check_plugins)
+  validate_legacy($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
+  validate_legacy($apikey)
+  validate_legacy($service_enable)
+  validate_legacy($metrics_plugins)
+  validate_legacy($check_plugins)
 
   if $roles != undef {
-    validate_array($roles)
+    validate_legacy($roles)
   }
 
   if $host_status != undef {
-    validate_hash($host_status)
+    validate_legacy($host_status)
   }
 
   if $ignore_filesystems != undef {
-    validate_string($ignore_filesystems)
+    validate_legacy($ignore_filesystems)
   }
 
   if $apikey == undef {
