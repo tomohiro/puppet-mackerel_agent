@@ -91,14 +91,14 @@ class mackerel_agent(
   $metrics_plugins     = {},
   $check_plugins       = {},
   $use_mkr             = undef,
-  $mkr_plugins         = [],
+  $mkr_plugins         = {},
 ) {
   validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
   validate_bool($service_enable)
   validate_hash($metrics_plugins)
   validate_hash($check_plugins)
-  validate_array($mkr_plugins)
+  validate_hash($mkr_plugins)
 
   if $roles != undef {
     validate_array($roles)
