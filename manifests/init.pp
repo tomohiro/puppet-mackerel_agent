@@ -90,6 +90,7 @@ class mackerel_agent(
   $use_check_plugins   = undef,
   $metrics_plugins     = {},
   $check_plugins       = {},
+  $use_mkr             = undef,
 ) {
   validate_re($::osfamily, '^(RedHat|Debian)$', 'This module only works on RedHat or Debian based systems.')
   validate_string($apikey)
@@ -115,7 +116,8 @@ class mackerel_agent(
     class { 'mackerel_agent::install':
       ensure              => $ensure,
       use_metrics_plugins => $use_metrics_plugins,
-      use_check_plugins   => $use_check_plugins
+      use_check_plugins   => $use_check_plugins,
+      use_mkr             => $use_mkr
     }
 
     class { 'mackerel_agent::config':
