@@ -8,8 +8,8 @@ define mackerel_agent::mkr_plugin {
     fail('Please install mkr')
   }
 
-  exec { "mkr install ${name}":
-    command => "mkr install ${name}",
+  exec { "mkr plugin install ${name}":
+    command => "mkr plugin install ${name}",
     user    => 'root',
     path    => ['/usr/bin'],
     creates => "/opt/mackerel-agent/plugins/bin/${name}",
