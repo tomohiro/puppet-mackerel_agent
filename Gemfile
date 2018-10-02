@@ -11,7 +11,7 @@ group :test, :development do
   gem 'metadata-json-lint', '~> 0.0.6'
 
   # Acceptance tests
-  gem 'beaker', '~> 3.0.0'
+  gem 'beaker', '~> 3.0'
   gem 'beaker-rspec'
 
   # Puppet module utils
