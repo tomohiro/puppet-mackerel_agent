@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe 'mackerel_agent::config' do
+  let(:pre_condition) do <<-EOS
+    include mackerel_agent::install
+    include mackerel_agent::service
+    EOS
+  end
+
   context 'with present (default)' do
     it { should contain_file('mackerel-agent.conf').with_ensure('present') }
     it { should contain_file('/etc/mackerel-agent/conf.d').with_ensure('directory') }

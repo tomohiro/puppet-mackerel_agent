@@ -60,4 +60,28 @@ describe 'mackerel_agent::install' do
 
     it { should contain_package('mackerel-check-plugins').with_ensure('latest') }
   end
+
+  context 'with mkr' do
+    let(:params) do
+      { :use_mkr => true }
+    end
+
+    it { should contain_package('mkr').with_ensure('present') }
+  end
+
+  context 'without mkr' do
+    let(:params) do
+      { :use_mkr => false }
+    end
+
+    it { should contain_package('mkr').with_ensure('absent') }
+  end
+
+  context 'with latest mackerel check plugins' do
+    let(:params) do
+      { :use_mkr => 'latest' }
+    end
+
+    it { should contain_package('mkr').with_ensure('latest') }
+  end
 end

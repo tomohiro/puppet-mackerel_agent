@@ -59,6 +59,10 @@ class { 'mackerel_agent':
       max_check_attempts    => '3',
       check_interval        => '5'
     }
+  },
+  mkr_plugins         => {
+    'mackerel-plugin-sample' => {},
+    'mackerel-plugin-json' => {}
   }
 }
 ```
@@ -87,8 +91,10 @@ mackerel_agent::check_plugins:
     notification_interval: '60'
     max_check_attempts: '3'
     check_interval: '5'
+mackerel_agent::mkr_plugins:
+  mackerel-plugin-sample: {}
+  mackerel-plugin-json: {}
 ```
-
 
 Limitations
 --------------------------------------------------------------------------------

@@ -3,7 +3,8 @@
 class mackerel_agent::install(
   $ensure              = present,
   $use_metrics_plugins = undef,
-  $use_check_plugins   = undef
+  $use_check_plugins   = undef,
+  $use_mkr             = undef
 ) {
 
   case $::osfamily {
@@ -129,6 +130,30 @@ class mackerel_agent::install(
     }
     'latest': {
       package { 'mackerel-check-plugins':
+        ensure  => latest,
+        require => $pkg_require,
+      }
+    }
+    default: {
+      # Do nothing
+    }
+  }
+
+  case $use_mkr {
+    true: {
+      package { 'mkr':
+        ensure  => present,
+        require => $pkg_require,
+      }
+    }
+    false: {
+      package { 'mkr':
+        ensure  => absent,
+        require => $pkg_require,
+      }
+    }
+    'latest': {
+      package { 'mkr':
         ensure  => latest,
         require => $pkg_require,
       }
