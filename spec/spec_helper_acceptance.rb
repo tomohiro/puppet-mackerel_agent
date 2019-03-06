@@ -1,21 +1,13 @@
-require 'beaker-rspec'
+require 'beaker-puppet'
+require 'beaker-rspec/spec_helper'
+require 'beaker-rspec/helpers/serverspec'
+require 'beaker/puppet_install_helper'
+require 'beaker/module_install_helper'
+require 'beaker/i18n_helper'
+require 'beaker-task_helper'
 
-module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-
-# Install Puppet agent on all hosts
-install_puppet_agent_on(hosts, {})
-
-RSpec.configure do |c|
-  c.formatter = :documentation
-
-  c.before :suite do
-    # Install mackerel_agent module to all hosts
-    install_dev_puppet_module(source: module_root)
-
-    hosts.each do |host|
-      # Install dependencies
-      on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
-      on(host, puppet('module', 'install', 'puppetlabs-apt'))
-    end
-  end
-end
+run_puppet_install_helper
+configure_type_defaults_on(hosts)
+install_ca_certs unless ENV['PUPPET_INSTALL_TYPE'] =~ %r{pe}i
+install_module_on(hosts)
+install_module_dependencies_on(hosts)
