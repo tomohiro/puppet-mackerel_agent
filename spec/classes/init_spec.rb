@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe 'mackerel_agent' do
   describe 'compile' do
-    it { should compile }
-    it { should compile.with_all_deps }
-    it { should contain_class('mackerel_agent') }
+    it { is_expected.to compile }
+    it { is_expected.to compile.with_all_deps }
+    it { is_expected.to contain_class('mackerel_agent') }
   end
 
   describe 'supporting operating systems validation' do
     context 'on RedHat has been supported' do
-      it { should compile }
+      it { is_expected.to compile }
     end
 
     context 'on Debian has been supported' do
       let(:facts) do
-        { :osfamily => 'Debian' }
+        { osfamily: 'Debian' }
       end
 
-      it { should compile }
+      it { is_expected.to compile }
     end
   end
 end

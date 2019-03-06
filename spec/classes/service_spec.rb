@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe 'mackerel_agent::service' do
   context 'with running (defaults)' do
-    it { should contain_service('mackerel-agent').with_ensure('running') }
+    it { is_expected.to contain_service('mackerel-agent').with_ensure('running') }
   end
 
   context 'with stopped' do
     let(:params) do
-      { :ensure => 'stopped' }
+      { ensure: 'stopped' }
     end
 
-    it { should contain_service('mackerel-agent').with_ensure('stopped') }
+    it { is_expected.to contain_service('mackerel-agent').with_ensure('stopped') }
   end
 end

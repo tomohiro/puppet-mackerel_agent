@@ -10,7 +10,7 @@ RSpec.configure do |c|
 
   c.before :suite do
     # Install mackerel_agent module to all hosts
-    install_dev_puppet_module(:source => module_root)
+    install_dev_puppet_module(source: module_root)
 
     hosts.each do |host|
       # Install dependencies
