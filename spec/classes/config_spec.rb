@@ -12,9 +12,9 @@ describe 'mackerel_agent::config' do
     let :facts do
       {
         osfamily: 'RedHat',
-	operatingsystem: 'RedHat',
-	operatingsystemrelease: '6',
-	operatingsystemmajrelease: '6',
+        operatingsystem: 'RedHat',
+        operatingsystemrelease: '6',
+        operatingsystemmajrelease: '6',
       }
     end
 

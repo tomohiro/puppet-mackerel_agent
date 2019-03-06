@@ -18,6 +18,7 @@ describe 'mackerel_agent::mkr_plugin' do
         operatingsystemmajrelease: '6',
       }
     end
+
     it { is_expected.to compile }
   end
 

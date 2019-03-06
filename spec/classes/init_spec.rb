@@ -9,6 +9,7 @@ describe 'mackerel_agent' do
       operatingsystemmajrelease: '6',
     }
   end
+
   describe 'compile' do
     it { is_expected.to compile }
     it { is_expected.to compile.with_all_deps }
