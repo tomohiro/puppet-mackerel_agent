@@ -20,23 +20,26 @@ matrix:
   fast_finish: true
   include:
     -
-      rvm: default
-      sudo: required
-      services: docker
+      bundler_args:
       env: BEAKER_set=centos-6-x64
-      script: bundle exec rake beaker
-    -
       rvm: default
-      sudo: required
+      script: bundle exec rake beaker
       services: docker
+      sudo: required
+    -
+      bundler_args:
       env: BEAKER_set=ubuntu-14.04-x64
-      script: bundle exec rake beaker
-    -
       rvm: default
-      sudo: required
-      services: docker
-      env: BEAKER_set=debian-9-x64
       script: bundle exec rake beaker
+      services: docker
+      sudo: required
+    -
+      bundler_args:
+      env: BEAKER_set=debian-9-x64
+      rvm: default
+      script: bundle exec rake beaker
+      services: docker
+      sudo: required
     -
       env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
     -
