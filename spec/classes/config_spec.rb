@@ -66,15 +66,14 @@ describe 'mackerel_agent::config' do
     context 'with check_plugins on some parameters' do
       let(:params) do
         { check_plugins: {
-	  'ssh' => {
-	    'command' => 'ruby /path/to/check-ssh.rb',
-	    'action' => '{ command = "bash -c \'[ \"$MACKEREL_STATUS\" != \"OK\" ]\' && ruby /path/to/something.rb", user = "someone" }',
-	    'notification_interval' => '6',
-	    'max_check_attempts' => '3',
-	    'check_interval' => '5'
-	  }
-	}
-      }
+          'ssh' => {
+            'command' => 'ruby /path/to/check-ssh.rb',
+            'action' => '{ command = "bash -c \'[ \"$MACKEREL_STATUS\" != \"OK\" ]\' && ruby /path/to/something.rb", user = "someone" }',
+            'notification_interval' => '6',
+            'max_check_attempts' => '3',
+            'check_interval' => '5',
+          },
+        } }
       end
 
       it { is_expected.to contain_file('mackerel-agent.conf').with_ensure('present').with_content(%r{^\[plugin.checks.*\]\ncommand = \".*\"\naction = .*\nnotification_interval = .*\nmax_check_attempts = .*\ncheck_interval = .*$}) } # rubocop:disable Metrics/LineLength
