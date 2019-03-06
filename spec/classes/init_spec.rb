@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe 'mackerel_agent' do
+  let :facts do
+    {
+      osfamily: 'RedHat',
+      operatingsystem: 'RedHat',
+      operatingsystemrelease: '6',
+      operatingsystemmajrelease: '6',
+    }
+  end
   describe 'compile' do
     it { is_expected.to compile }
     it { is_expected.to compile.with_all_deps }

@@ -11,6 +11,13 @@ describe 'mackerel_agent::mkr_plugin' do
   end
 
   context 'on RedHat has been supported' do
+    let(:facts) do
+      {
+        osfamily: 'RedHat',
+        operatingsystem: 'RedHat',
+        operatingsystemmajrelease: '6',
+      }
+    end
     it { is_expected.to compile }
   end
 
