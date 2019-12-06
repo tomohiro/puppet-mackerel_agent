@@ -47,6 +47,7 @@ apikey = ENV['MACKERERL_API_KEY']
 
 SUPPORTING_PLATFORMS = {
   centos: 'puppetlabs/centos-6.6-64-puppet',
+  centos7: 'puppetlabs/centos-7.2-64-puppet',
   ubuntu: 'puppetlabs/ubuntu-14.04-64-puppet'
 }
 

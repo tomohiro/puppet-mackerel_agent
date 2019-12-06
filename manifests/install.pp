@@ -13,17 +13,21 @@ class mackerel_agent::install(
           $baseurl = 'http://yum.mackerel.io/amznlinux/$releasever/$basearch'
           $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
         }
-        default: {
+        'CentOS': {
           if $::operatingsystemmajrelease == '6' {
             $baseurl = 'http://yum.mackerel.io/centos/$basearch'
             $gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
-          } else {
+          }
+          if $::operatingsystemmajrelease == '7' {
             $baseurl = 'http://yum.mackerel.io/v2/$basearch'
             $gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
           }
         }
+        default: {
+            $baseurl = 'http://yum.mackerel.io/v2/$basearch'
+            $gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
+        }
       }
-
       yumrepo { 'mackerel':
         name     => 'mackerel',
         baseurl  => $baseurl,
