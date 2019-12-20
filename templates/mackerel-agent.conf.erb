@@ -37,8 +37,10 @@ ignore = "<%= @ignore_filesystems %>"
 #   help: http://help.mackerel.io/entry/howto/mackerel-agent-plugins
 #   repository: https://github.com/mackerelio/mackerel-agent-plugins
 <% @metrics_plugins.each do |plugin, command| %>
+<% unless command == :undef -%>
 [plugin.metrics.<%= plugin %>]
 command = "<%= command %>"
+<% end -%>
 <% end %>
 
 # Configuration for Custom Check Plugins
@@ -47,6 +49,7 @@ command = "<%= command %>"
 #   help: http://help.mackerel.io/entry/howto/mackerel-check-plugins
 #   repository: https://github.com/mackerelio/go-check-plugins
 <% @check_plugins.each do |plugin, parameters| %>
+<% unless parameters == :undef -%>
 [plugin.checks.<%= plugin %>]
 <% if parameters.is_a?(Hash) -%>
 <% parameters.each do |param, data| -%>
@@ -58,5 +61,6 @@ command = "<%= command %>"
 <% end -%>
 <% else -%>
 command = "<%= parameters %>"
+<% end -%>
 <% end -%>
 <% end %>
