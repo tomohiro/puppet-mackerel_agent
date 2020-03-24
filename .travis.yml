@@ -42,6 +42,20 @@ matrix:
       sudo: required
     -
       bundler_args:
+      env: BEAKER_set=ubuntu-16.04-x64
+      rvm: default
+      script: bundle exec rake beaker
+      services: docker
+      sudo: required
+    -
+      bundler_args:
+      env: BEAKER_set=ubuntu-18.04-x64
+      rvm: default
+      script: bundle exec rake beaker
+      services: docker
+      sudo: required
+    -
+      bundler_args:
       env: BEAKER_set=debian-9-x64
       rvm: default
       script: bundle exec rake beaker
