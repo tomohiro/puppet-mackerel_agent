@@ -37,7 +37,16 @@ puppet_version = ENV['PUPPET_GEM_VERSION']
 facter_version = ENV['FACTER_GEM_VERSION']
 hiera_version = ENV['HIERA_GEM_VERSION']
 
-gems = {}
+gems = {
+  'beaker' => '< 5.0.0',
+  'beaker-puppet' => nil,
+  'beaker-docker' => nil,
+  'beaker-puppet_install_helper' => nil,
+  'beaker-module_install_helper' => nil,
+  'beaker-i18n_helper' => nil,
+  'beaker-task_helper' => nil,
+  'beaker-rspec' => nil,
+ }
 
 gems['puppet'] = location_for(puppet_version)
 
