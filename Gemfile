@@ -37,7 +37,10 @@ puppet_version = ENV['PUPPET_GEM_VERSION']
 facter_version = ENV['FACTER_GEM_VERSION']
 hiera_version = ENV['HIERA_GEM_VERSION']
 
-gems = {}
+gems = {
+  'beaker' => '~> 3.0',
+  'beaker-rspec' => '',
+ }
 
 gems['puppet'] = location_for(puppet_version)
 
