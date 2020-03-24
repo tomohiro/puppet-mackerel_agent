@@ -41,6 +41,10 @@ gems = {
   'beaker' => '< 5.0.0',
   'beaker-puppet' => nil,
   'beaker-docker' => nil,
+  'beaker-puppet_install_helper' => nil,
+  'beaker-module_install_helper' => nil,
+  'beaker-i18n_helper' => nil,
+  'beaker-task_helper' => nil,
   'beaker-rspec' => nil,
  }
 
