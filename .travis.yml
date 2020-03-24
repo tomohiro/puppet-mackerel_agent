@@ -28,6 +28,13 @@ matrix:
       sudo: required
     -
       bundler_args:
+      env: BEAKER_set=centos-7-x64
+      rvm: default
+      script: bundle exec rake beaker
+      services: docker
+      sudo: required
+    -
+      bundler_args:
       env: BEAKER_set=ubuntu-14.04-x64
       rvm: default
       script: bundle exec rake beaker
