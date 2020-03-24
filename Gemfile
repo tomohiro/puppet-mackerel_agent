@@ -40,6 +40,7 @@ hiera_version = ENV['HIERA_GEM_VERSION']
 gems = {
   'beaker' => '< 5.0.0',
   'beaker-puppet' => nil,
+  'beaker-docker' => nil,
   'beaker-rspec' => nil,
  }
 
