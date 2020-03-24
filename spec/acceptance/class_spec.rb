@@ -12,6 +12,7 @@ describe 'mackerel_agent class' do
 
     it 'works without errors' do
       result = apply_manifest(manifest, acceptable_exit_codes: [0, 6], catch_failures: true)
+      expect(result.exit_code).not_to eq 1
       expect(result.exit_code).not_to eq 4
     end
 
