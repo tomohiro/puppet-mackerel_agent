@@ -1,7 +1,7 @@
 HOSTS:
-  ubuntu-14.04-x64:
-    platform: ubuntu-14.04-x64
-    image: ubuntu:14.04
+  ubuntu-18.04-x64:
+    platform: ubuntu-18.04-x64
+    image: ubuntu:18.04
     hypervisor: docker
     docker_preserve_image: true
 CONFIG:
