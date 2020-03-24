@@ -9,10 +9,9 @@ define mackerel_agent::mkr_plugin {
   }
 
   exec { "mkr plugin install ${name}":
-    command => "mkr plugin install ${name}",
+    command => "mkr plugin install --upgrade ${name}",
     user    => 'root',
     path    => ['/usr/bin'],
-    creates => "/opt/mackerel-agent/plugins/bin/${name}",
     require => Package['mkr']
   }
 
