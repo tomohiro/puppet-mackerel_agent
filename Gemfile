@@ -38,7 +38,7 @@ facter_version = ENV['FACTER_GEM_VERSION']
 hiera_version = ENV['HIERA_GEM_VERSION']
 
 gems = {
-  'beaker' => '~> 3.0',
+  'beaker' => '< 5.0.0',
   'beaker-rspec' => '',
  }
 
