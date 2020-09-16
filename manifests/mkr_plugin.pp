@@ -15,7 +15,7 @@ define mackerel_agent::mkr_plugin {
     command => "mkr plugin install --upgrade ${name}",
     user    => 'root',
     path    => ['/usr/bin'],
-    unless  => "test '${name_array[1]}' = '`cat ${install_location}/meta/${name_array[0]}/release_tag`'",
+    unless  => "test '${name_array[1]}' = \"`cat ${install_location}/meta/${name_array[0]}/release_tag`\"",
     require => Package['mkr']
   }
 
